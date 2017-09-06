@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shapes</title>
+
+  <style>
+
+    nav.topnav
+    {
+      background-color: #34495E;
+      overflow: hidden;
+    }
+
+  </style>
+
+</head>
+
+  <body>
+
+    <nav class = "topnav">
+      <p1 style="color: #EAFAF1; font-size:20px"><center>Shape Play</center></p1>
+
+    </nav>
+
+    <section>
+      <h2>Select a Shape</h2>
+
+      Circle<input type="radio" name="hello" id="circle">
+      Rectangle<input type="radio" name="hello" id="rectangle">
+      Triangle<input type="radio" name="hello" id="triangle">
+      Square<input type="radio" name="hello" id="square">
+      Hexagon<input type="radio" name="hello" id="hexagon">
+      <br>
+      <button onclick="draw()">View</button>
+
+    </section>
+
+    <br>
+
+    <div id="area"></div>
+    <br>
+
+    <div id="perimeter"></div>
+
+    <canvas id="canvas" width="500" height="500" style="margin-top:100px">
+    Your browser does not support the HTML5 canvas tag.</canvas>
+
+
+    <script>
+
+      function draw()
+      {
+        if(document.getElementById("rectangle").checked == true)
+        {
+          var len = prompt("Please enter length", "Length");
+          var length = parseInt(len);
+          var brea = prompt("Please enter breadth", "Breadth");
+          var breadth = parseInt(brea);
+          var c = document.getElementById("canvas");
+          var ctx = c.getContext('2d');
+          ctx.clearRect(0, 0, c.width, c.height);
+          ctx.beginPath();
+          ctx.fillRect(100, 150, length, breadth);
+          var area = length*breadth;
+          var perimeter = 2*(length+breadth);
+          document.getElementById("area").innerHTML = "Area : "+ area;
+          document.getElementById("perimeter").innerHTML = "Perimeter : "+perimeter;
+
+        }
+
+        else if (document.getElementById("circle").checked == true)
+        {
+          var rad = prompt("Please enter the radius", "Radius");
+          var radius = parseInt(rad);
+          var c=document.getElementById("canvas");
+          var ctx=c.getContext("2d");
+          ctx.clearRect(0, 0, c.width, c.height);
+          ctx.beginPath();
+          ctx.arc(100,75,radius,0,2*Math.PI);
+          ctx.stroke();
+          var area = 3.14*radius*radius;
+          var perimeter = 2*3.14*radius;
+          document.getElementById("area").innerHTML = "Area : "+ area;
+          document.getElementById("perimeter").innerHTML = "Perimeter : "+perimeter;
+        }
+
+        else if(document.getElementById("triangle").checked == true)
+        {
+          var hei = prompt("Please enter the height", "Height");
+          var height = parseInt(hei);
+          var ba = prompt("Please enter the base", "Base");
+          var base = parseInt(ba);
+          var c=document.getElementById("canvas");
+          var ctx=c.getContext("2d");
+          ctx.clearRect(0, 0, c.width, c.height);
+          ctx.beginPath();
+          ctx.moveTo(100, 200);
+          ctx.lineTo(100, 300);
+          ctx.lineTo(300, 300);
+          ctx.fill();
+          var area = 0.5*base*height;
+          var hypo= Math.sqrt((base*base)+(height*height));
+          var hypotenuse = parseInt(hypo);
+          var perimeter = base+height+hypotenuse;
+          document.getElementById("area").innerHTML = "Area : "+ area;
+          document.getElementById("perimeter").innerHTML = "Perimeter : "+perimeter;
+
+        }
+
+        else if(document.getElementById("square").checked == true)
+        {
+          var si = prompt("Please enter the side", "Side");
+          var side = parseInt(si);
+          var c=document.getElementById("canvas");
+          var ctx=c.getContext("2d");
+          ctx.clearRect(0, 0, c.width, c.height);
+          ctx.beginPath();
+          ctx.fillRect(100,100,side,side);
+          var area = side*side;
+          var perimeter = 4*side;
+          document.getElementById("area").innerHTML = "Area : "+ area;
+          document.getElementById("perimeter").innerHTML = "Perimeter : "+perimeter;
+
+        }
+
+        else if(document.getElementById("hexagon").checked == true)
+        {
+          var si = prompt("Please enter the side", "Side");
+          var side = parseInt(si);
+          var c=document.getElementById("canvas");
+          var ctx=c.getContext("2d");
+          ctx.clearRect(0, 0, c.width, c.height);
+          ctx.beginPath();
+          ctx.moveTo(199, 100);
+          ctx.lineTo(199, 100);
+          ctx.lineTo(298, 150);
+          ctx.lineTo(298, 248);
+          ctx.lineTo(199, 298);
+          ctx.lineTo(199, 298);
+          ctx.lineTo(101, 248);
+          ctx.lineTo(101, 150);
+          ctx.closePath();
+          ctx.fill();
+          var area = 2.598*side*side;
+          var perimeter = 6*side;
+          document.getElementById("area").innerHTML = "Area : "+ area;
+          document.getElementById("perimeter").innerHTML = "Perimeter : "+perimeter;
+
+
+        }
+
+      }
+
+    </script>
+
+
+  </body>
+</html>
